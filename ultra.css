@@ -1,0 +1,38 @@
+/* Night Desk / Neon Skyline Edition: visual layer, no game mechanics touched */
+:root{--panel:#0b1828;--panel2:#14283d;--line:#4a8098;--dim:#a6c0d3}
+#game{background:radial-gradient(circle at 50% -30%,#1c4b62,#06101e 65%)}
+#top{backdrop-filter:blur(14px);border-bottom:1px solid #65dbf666}
+#top:before{content:'NIGHT DESK  /  OPERATIONS';position:absolute;right:12px;bottom:2px;font:600 8px Rajdhani,Arial,sans-serif;letter-spacing:2px;color:#8acfe1;opacity:.65;pointer-events:none}
+#mapwrap{isolation:isolate}
+#mapwrap .nd-atmos{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;opacity:.92;transition:opacity .3s}
+#mapwrap .nd-skyline{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.44;mix-blend-mode:screen}
+#mapwrap .nd-sweep{position:absolute;width:110vmax;height:110vmax;left:50%;top:50%;transform-origin:center;transform:translate(-50%,-50%);background:conic-gradient(from 0deg,transparent 0deg,transparent 310deg,#48f4ff05 332deg,#50edff20 350deg,transparent 360deg);animation:ndRadar 15s linear infinite;opacity:.55}
+#mapwrap .nd-corners{position:absolute;inset:12px;border:1px solid #67dff91a;box-shadow:inset 0 0 35px #04132233}
+#mapwrap .nd-corners:before{content:'◈  LIVE CITY GRID  /  SECTOR MONITOR';position:absolute;top:7px;left:9px;font:700 10px Rajdhani,Arial,sans-serif;letter-spacing:1.7px;color:#a2f3ff;text-shadow:0 0 10px #25dcff}
+#mapwrap .nd-corners:after{content:'●  SIGNAL ACTIVE';position:absolute;bottom:7px;right:10px;font:700 10px Rajdhani,Arial,sans-serif;letter-spacing:1.4px;color:#6fffc5;text-shadow:0 0 10px #6fffc5}
+#mapwrap .nd-grid{position:absolute;inset:0;background-image:linear-gradient(#64d9ff08 1px,transparent 1px),linear-gradient(90deg,#64d9ff08 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,#0008,transparent 75%)}
+#mapwrap.nd-flat .nd-atmos{opacity:0}
+#mapwrap.nd-flat #map{filter:none}
+#ndVisual{position:relative;min-width:38px;color:#aef8ff!important;font-size:12px;font-weight:900}
+#ndVisual[aria-pressed=true]{border-color:#8df6ff!important;box-shadow:0 0 16px #42eaff45,inset 0 1px #fff5!important}
+#queue{border-left:1px solid #5de4ff44!important}
+#queue:before{content:'◈ INCOMING INCIDENTS';display:block;flex:none;padding:7px 8px;color:#7bdcf2;font:700 11px Rajdhani,Arial,sans-serif;letter-spacing:1.5px}
+#roster{position:relative}
+#roster:before{content:'ACTIVE HERO NETWORK';position:absolute;top:2px;right:8px;font:700 9px Rajdhani,Arial,sans-serif;letter-spacing:1.5px;color:#8bd9e6;opacity:.65;pointer-events:none}
+.hc{position:relative;transition:transform .2s,filter .2s,box-shadow .2s!important}
+.hc:hover{transform:translateY(-4px);filter:brightness(1.18)}
+.hc .por,.mini .e,.chip .e{background-image:radial-gradient(circle at 25% 15%,#ffffff42,transparent 40%),linear-gradient(145deg,#16445a,#0a1729);border:1px solid #7cdffb66;box-shadow:inset 0 1px #ffffff4d,0 5px 14px #0009,0 0 15px #42d5ff1b}
+.hc .por{border-radius:14px!important;transform:perspective(180px) rotateY(-7deg);text-shadow:0 3px 6px #000b}
+.hc:active{transform:translateY(0)}
+.sheet{animation:ndEnter .25s ease-out}
+.sheet .sh-h h2,.card h3{letter-spacing:.035em}
+.diff.hard,.diff.critical{box-shadow:0 0 14px #ff5b6d55}
+.opt,.tropt,.mode-btn,.lk-card{transition:transform .18s,box-shadow .18s,border-color .18s}
+.opt:hover,.tropt:hover,.mode-btn:hover,.lk-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px #0007,0 0 15px #42eaff20}
+#toasts>*{backdrop-filter:blur(12px);box-shadow:0 10px 30px #000b,0 0 18px #58dcff25}
+.nd-chip{display:inline-flex;gap:4px;align-items:center}
+@keyframes ndRadar{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes ndEnter{from{opacity:.6;transform:translateY(9px) scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:750px){#top:before{display:none}#mapwrap .nd-corners:before,#mapwrap .nd-corners:after{font-size:8px}#queue:before{display:none}#roster:before{display:none}}
+@media(prefers-reduced-motion:reduce){#mapwrap .nd-sweep,.sheet{animation:none!important}.hc,.opt,.tropt{transition:none!important}}
+html.reduce-fx #mapwrap .nd-sweep{animation:none;opacity:0}
